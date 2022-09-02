@@ -1,0 +1,41 @@
+.chat-item-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 17px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #202020;
+  &__title-wrapper {
+    display: flex;
+  }
+  &__avatar img {
+    width: 47px;
+    height: 47px;
+    border-radius: 25px;
+  }
+  &__title {
+    margin-left: 10px;
+    margin-top: 5px;
+    color: #fff;
+  }
+  &__title div:nth-child(1) {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  &__title div:nth-child(2) {
+    font-size: 13px;
+  }
+  &__title div:nth-child(2) span {
+    color: #999999;
+  }
+  &__data {
+    font-size: 10px;
+    color: #999999;
+    margin-top: 5px;
+  }
+  &__data div:nth-child(2) {
+    margin-top: 3px;
+    display: flex;
+    justify-content: end;
+  }
+}

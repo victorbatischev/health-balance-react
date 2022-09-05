@@ -102,6 +102,10 @@ const DialogPage = () => {
     setTimeout(() => setMessages([...messages, ...newMessages]), 500);
   };
 
+  const createMessage = (message: any, file: any) => {
+    setMessages([message, ...messages]);
+  };
+
   return (
     <div>
       <Header title={"Dialog - " + params.dialogId} />
@@ -129,7 +133,7 @@ const DialogPage = () => {
         </InfiniteScroll>
       </div>
       <div>
-        <CreateMessage />
+        <CreateMessage createMessage={createMessage} />
       </div>
     </div>
   );

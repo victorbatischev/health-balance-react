@@ -9,6 +9,13 @@ const DialogItem = ({ message }: any) => {
         <div className="dialogs-my-message">
           <div className="dialogs-my-message__wrapper">
             <div>{message.text}</div>
+            {message.src ? (
+              <div className="dialogs-my-message__image">
+                <img src={message.src} alt="" />
+              </div>
+            ) : (
+              ""
+            )}
             <span>{time[1]}</span>
           </div>
         </div>

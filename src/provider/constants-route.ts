@@ -38,3 +38,4 @@ export const ADD_INTERESTING_ROUTE = "/add-interesting";
 export const SYNCING_ROUTE = "/syncing";
 export const PRODUCT_SCREEN_ROUTE = "/product-screen";
 export const DIALOG_ROUTE = "/dialog";
+export const INTERVIEW_PAGE = "/interview";

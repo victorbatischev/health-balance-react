@@ -38,6 +38,7 @@ import {
   SYNCING_ROUTE,
   PRODUCT_SCREEN_ROUTE,
   DIALOG_ROUTE,
+  INTERVIEW_PAGE,
 } from "./constants-route";
 import { AuthPage } from "../pages/Authorization/Auth-page";
 import { StartPage } from "../pages/Start-pages/StartPage";
@@ -77,7 +78,8 @@ import { NewChallengeInfo } from "../pages/New-challenge-info/New-Challenge-Info
 import { AddInteresting } from "../pages/Add-interesting/Add-interesting";
 import { SyncingPage } from "../pages/Syncing-page/Syncing-page";
 import { ProductScreen } from "../pages/Product-screen/Product-screen";
-import DialogPage from "../pages/Dialog-page/Dialog-page";
+import { DialogPage } from "../pages/Dialog-page/Dialog-page";
+import { InterviewPage } from "../pages/Interview-page/Interview-page";
 
 export const publicRoutes = [
   {
@@ -238,5 +240,9 @@ export const privateRoutes = [
   {
     path: DIALOG_ROUTE + "/:dialogId",
     Component: DialogPage,
+  },
+  {
+    path: INTERVIEW_PAGE,
+    Component: InterviewPage,
   },
 ];

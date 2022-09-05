@@ -80,7 +80,7 @@ const testDialogData = [
   },
 ];
 
-const DialogPage = () => {
+export const DialogPage = () => {
   const params = useParams();
   const [messages, setMessages] = useState(testDialogData);
   const loadMoreMesage = () => {
@@ -139,4 +139,4 @@ const DialogPage = () => {
   );
 };
 
-export default DialogPage;
+//export default DialogPage;

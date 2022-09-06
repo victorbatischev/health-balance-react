@@ -39,3 +39,5 @@ export const SYNCING_ROUTE = "/syncing";
 export const PRODUCT_SCREEN_ROUTE = "/product-screen";
 export const DIALOG_ROUTE = "/dialog";
 export const INTERVIEW_PAGE = "/interview";
+export const TEAM_MEMBERS_PAGE = "/team-members";
+export const USER_PROFILE_PAGE = "/user-profile";

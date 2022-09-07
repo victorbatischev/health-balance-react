@@ -170,7 +170,7 @@ export const privateRoutes = [
     Component: LecturePage,
   },
   {
-    path: TEAM_SELECTION_ROUTE,
+    path: TEAM_SELECTION_ROUTE + "/:challangeId",
     Component: TeamSelectionPage,
   },
   {

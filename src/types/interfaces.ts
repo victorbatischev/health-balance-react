@@ -7,3 +7,8 @@ export interface IListLeadersChallengeItem {
   title: string;
   isYou?: boolean;
 }
+
+export interface ITeam {
+  id: number;
+  name: string;
+}

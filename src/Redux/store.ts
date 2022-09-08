@@ -7,6 +7,7 @@ import { accessRecoverySlice } from "./slice/accessRecoverySlice";
 import { visitedPagesSlice } from "./slice/visitedPagesSlice";
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from "redux-persist/lib/storage";
+import { myChallangesSlice } from "./slice/myChallangeSlice";
 
 const persistConfig = {
   key: "root",
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   creatingChallenge: creatingChallengeSlice.reducer,
   recovery: accessRecoverySlice.reducer,
   visitedPages: visitedPagesSlice.reducer,
+  myChallanges: myChallangesSlice.reducer,
 });
 const persistedReducers = persistReducer(persistConfig, reducer);
 

@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import "./team-selection-page.scss";
 import { TeamSelection } from "../../Components/Team-selection/Team-selection";
 import Header from "../../Components/Header/Header";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { addChallange } from "../../Redux/slice/myChallangeSlice";
+import { useAppDispatch } from "../../utils/hooks/redux-hooks";
 
 export const TeamSelectionPage = () => {
   const params = useParams();
@@ -29,6 +32,20 @@ export const TeamSelectionPage = () => {
     },
   ];
   const [currentTeam, setCurrentTeam] = useState();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const joinChallengeHandler = () => {
+    if (!currentTeam) {
+      return false;
+    }
+    const newChallenge = {
+      team: currentTeam,
+      challangeId: Number(params.challangeId),
+    };
+    dispatch(addChallange(newChallenge));
+    navigate("/challenge");
+  };
 
   return (
     <div className={"team-selection-page"}>
@@ -47,7 +64,10 @@ export const TeamSelectionPage = () => {
         />
       </div>
       {currentTeam ? (
-        <button className="team-selection-page__button _button-white">
+        <button
+          onClick={joinChallengeHandler}
+          className="team-selection-page__button _button-white"
+        >
           Готово
         </button>
       ) : (

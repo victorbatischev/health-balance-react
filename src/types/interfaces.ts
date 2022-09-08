@@ -12,3 +12,8 @@ export interface ITeam {
   id: number;
   name: string;
 }
+
+export interface IMyChallange {
+  team: ITeam;
+  challangeId: number;
+}

@@ -3,20 +3,26 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 interface IVisitedSlice {
-  challenge: any;
+  challengePage: any;
 }
 
 const initialState: IVisitedSlice = {
-  challenge: [1, 2, 3],
+  challengePage: {
+    visitCount: 0,
+  },
 };
 
 export const visitedPagesSlice = createSlice({
   name: "visitedPages",
   initialState,
-  reducers: {},
+  reducers: {
+    setVisitedChallengePage: (state, action) => {
+      state.challengePage.visitCount = action.payload;
+    },
+  },
 });
 
-export const {} = visitedPagesSlice.actions;
+export const { setVisitedChallengePage } = visitedPagesSlice.actions;
 
 //export const selectCount = (state: RootState) => state.app
 

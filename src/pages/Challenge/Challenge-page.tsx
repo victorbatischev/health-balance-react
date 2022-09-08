@@ -32,15 +32,14 @@ export const ChallengePage = () => {
 
   return (
     <div className={"challenge-page"}>
-      {visitCount === 0 ||
-        (visitCount === 1 && (
-          <div>
-            <div className="challenge-page__first-instruction-background"></div>
-            <div className="challenge-page__first-instruction">
-              Примите участие в своём первом челлендже
-            </div>
+      {visitCount === 1 && (
+        <div>
+          <div className="challenge-page__first-instruction-background"></div>
+          <div className="challenge-page__first-instruction">
+            Примите участие в своём первом челлендже
           </div>
-        ))}
+        </div>
+      )}
       <Navigation />
       <HeaderTwo title={"Челленджи"} marginBottom={40} />
 

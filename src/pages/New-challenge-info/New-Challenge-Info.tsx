@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./new-challenge-info.scss";
 import Header from "../../Components/Header/Header";
 import { HeaderChallenge } from "../../Components/Active-challenge/Header-challenge";
@@ -7,13 +7,17 @@ import { roles, typesChallenge } from "../../types/enums";
 import icon_clock from "../../assets/image/Interesting/clock.svg";
 import { TaskChallenge } from "../../Components/Challenge/Task-challenge";
 import { RewardCount } from "../../Components/Reward/Reward-count";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   LECTURES_ROUTE,
   TEAM_SELECTION_ROUTE,
 } from "../../provider/constants-route";
 import { ListLeadersChallenge } from "../../Components/List-leaders-challenge/List-leaders-challenge";
 import icon_edit from "../../assets/image/icon-edit.svg";
+import { useSelector } from "react-redux";
+import InstructionModal from "../../Components/Modal/InstructionModal";
+import { useAppDispatch } from "../../utils/hooks/redux-hooks";
+import { setStoreFirstChallenge } from "../../Redux/slice/visitedPagesSlice";
 
 export const NewChallengeInfo = () => {
   const params = useParams();
@@ -62,17 +66,44 @@ export const NewChallengeInfo = () => {
     },
   ];
 
+  const navigation = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const firstChallange = useSelector(
+    (state: any) => state.visitedPages.newChallengeInfoPage.firstChallange
+  );
+
+  const [startInstruction, setStartInstruction] = useState(0);
+
+  const goToTeam = () => {
+    dispatch(setStoreFirstChallenge());
+    navigation(TEAM_SELECTION_ROUTE + "/" + params.id);
+  };
+
   return (
     <div className={"new-challenge-info"}>
+      {startInstruction === 3 && <InstructionModal actionCallback={goToTeam} />}
       <Header title={"Челлендж"} />
-      <div className="new-challenge-info__main">
-        <HeaderChallenge />
+      <div
+        style={
+          startInstruction === 1 || startInstruction === 2
+            ? { opacity: 0.2 }
+            : {}
+        }
+      >
+        <div className="new-challenge-info__main">
+          <HeaderChallenge />
+        </div>
+        <div className="new-challenge-info__description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur
+          adipiscing elit
+        </div>
       </div>
-      <div className="new-challenge-info__description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur
-        adipiscing elit
-      </div>
-      <div className="new-challenge-info__row">
+
+      <div
+        style={startInstruction === 2 ? { opacity: 0.2 } : {}}
+        className="new-challenge-info__row"
+      >
         <div className="new-challenge-info__data">
           <img
             className={"new-challenge-info__data-clock"}
@@ -86,21 +117,89 @@ export const NewChallengeInfo = () => {
           <RewardCount count={95} />
         </div>
       </div>
-      <div className="new-challenge-info__title-block block-title">Задания</div>
-      <div className="new-challenge-info__tasks">
-        <TaskChallenge type={typesChallenge.common} tasks={itemsTask} />
+      {startInstruction === 1 && (
+        <div
+          style={{
+            position: "absolute",
+            width: "70%",
+            zIndex: "6",
+            marginTop: "-30px",
+          }}
+        >
+          Здесь указана дата начала и конца челленджа, а так же ваша награда за
+          выполнение.
+          <div
+            style={{ marginTop: "30px", width: "50%" }}
+            onClick={() => setStartInstruction(2)}
+            className="_button-white"
+          >
+            Понятно
+          </div>
+        </div>
+      )}
+      <div style={startInstruction === 1 ? { opacity: 0.2 } : {}}>
+        <div className="new-challenge-info__title-block block-title">
+          Задания
+        </div>
+        <div className="new-challenge-info__tasks">
+          <TaskChallenge type={typesChallenge.common} tasks={itemsTask} />
+        </div>
+        {startInstruction === 2 && (
+          <div
+            style={{
+              position: "absolute",
+              width: "70%",
+              zIndex: "6",
+              marginTop: "20px",
+            }}
+          >
+            Тут показанно что нужно сделать для завершения челленджа
+            <div
+              style={{ marginTop: "30px", width: "50%" }}
+              onClick={() => setStartInstruction(3)}
+              className="_button-white"
+            >
+              Понятно
+            </div>
+          </div>
+        )}
+        <div
+          style={
+            startInstruction === 2
+              ? { marginTop: "20px", opacity: 0.2 }
+              : { marginTop: "20px" }
+          }
+        >
+          {firstChallange ? (
+            <div
+              onClick={() => setStartInstruction(1)}
+              className="new-challenge-info__button _button-white"
+            >
+              Принять участие
+            </div>
+          ) : (
+            <Link
+              className="new-challenge-info__button _button-white"
+              to={TEAM_SELECTION_ROUTE + "/" + params.id}
+            >
+              Принять участие
+            </Link>
+          )}
+        </div>
       </div>
-      <Link
-        className="new-challenge-info__button _button-white"
-        to={TEAM_SELECTION_ROUTE + "/" + params.id}
-      >
-        Принять участие
-      </Link>
 
-      <div className="new-challenge-info__title-block block-title">
-        Лидеры челленджа
+      <div
+        style={
+          startInstruction === 1 || startInstruction === 2
+            ? { opacity: 0.2 }
+            : {}
+        }
+      >
+        <div className="new-challenge-info__title-block block-title">
+          Лидеры челленджа
+        </div>
+        <ListLeadersChallenge items={itemsLeaders} role={roles.members} />
       </div>
-      <ListLeadersChallenge items={itemsLeaders} role={roles.members} />
     </div>
   );
 };

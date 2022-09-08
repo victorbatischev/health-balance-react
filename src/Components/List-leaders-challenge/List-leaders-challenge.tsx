@@ -36,7 +36,7 @@ export const ListLeadersChallenge: FC<IListLeadersChallenge> = ({
       </div>
       <div className="leader-challenge__items">
         {items.map((item, i) => (
-          <NavLink to={TEAM_MEMBERS_PAGE + "/" + item.id}>
+          <NavLink to={TEAM_MEMBERS_PAGE + "/" + item.id} key={i}>
             <article className="leader-challenge__item item-leader" key={i}>
               <div className="item-leader__column item-leader__column_1">
                 <div

@@ -1,16 +1,16 @@
 @import "../../assets/style/variables";
 
-.tracker-habits-page{
-  &__title{
+.tracker-habits-page {
+  &__title {
     margin: 0 0 20px 0;
   }
 
-  &__task-column{
+  &__task-column {
     display: flex;
     align-items: center;
   }
 
-  &__task-title{
+  &__task-title {
     font-weight: 500;
     font-size: 17px;
 
@@ -19,21 +19,25 @@
     justify-content: space-between;
     margin: 0 0 20px 0;
 
-    span{
+    span {
       color: $greenColor;
       padding: 0 5px;
     }
 
-    img{
+    img {
       width: 14px;
       height: 100%;
       margin: 0 10px 0 0;
     }
   }
 
-  &__target{
-    &:not(:last-child){
+  &__target {
+    &:not(:last-child) {
       margin: 0 0 46px 0;
     }
+  }
+  &__statistical-btn-wrapper {
+    margin-top: 20px;
+    margin-bottom: 40px;
   }
 }

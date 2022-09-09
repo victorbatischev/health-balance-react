@@ -30,6 +30,10 @@ export const ChallengePage = () => {
 
   const myChallanges = useSelector((state: any) => state.myChallanges);
 
+  const isFirstChallenge = useSelector(
+    (state: any) => state.visitedPages.challengePage.challengeCount
+  );
+
   return (
     <div className={"challenge-page"}>
       {visitCount === 1 && (
@@ -42,14 +46,15 @@ export const ChallengePage = () => {
       )}
       <Navigation />
       <HeaderTwo title={"Челленджи"} marginBottom={40} />
-
-      <Tabs
-        labels={labelsTabChallenge}
-        onClick={setValueTab}
-        value={valueTab}
-        customClassParent={"scroll-tabs"}
-        customClassChildren={"scroll-tabs-labels"}
-      />
+      <div style={isFirstChallenge === 1 ? { opacity: 0.2 } : {}}>
+        <Tabs
+          labels={labelsTabChallenge}
+          onClick={setValueTab}
+          value={valueTab}
+          customClassParent={"scroll-tabs"}
+          customClassChildren={"scroll-tabs-labels"}
+        />
+      </div>
       <TabContent index={0} value={valueTab}>
         <div className="challenge-page__title-block block-title">Активные</div>
         {myChallanges?.myChallanges?.length > 0 ? (
@@ -91,12 +96,13 @@ export const ChallengePage = () => {
           <CardChallenge type={typesChallenge.command} percent={96} id={5} />
         </div>
       </TabContent>
-
-      <div className="challenge-page__title-block block-title">
-        Новые челленджи
+      <div style={isFirstChallenge === 1 ? { opacity: 0.2 } : {}}>
+        <div className="challenge-page__title-block block-title">
+          Новые челленджи
+        </div>
+        <NewChallengeCard type={typesChallenge.personal} id={456} />
+        <NewChallengeCard type={typesChallenge.command} id={789} />
       </div>
-      <NewChallengeCard type={typesChallenge.personal} id={456} />
-      <NewChallengeCard type={typesChallenge.command} id={789} />
     </div>
   );
 };

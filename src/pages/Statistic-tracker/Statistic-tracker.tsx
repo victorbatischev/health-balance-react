@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
+import Header from "../../Components/Header/Header";
+import HealthDatepicker from "../../Components/HealthDatepicker/HealthDatepicker";
 
 export const StatisticTracker = () => {
-    return (
-        <div>
-
-        </div>
-    );
+  return (
+    <div>
+      <Header title="Статистика трекера" />
+      <HealthDatepicker />
+    </div>
+  );
 };
-

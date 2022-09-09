@@ -52,15 +52,15 @@ export const TrackerPage = () => {
     (state: any) => state.visitedPages.trackerPage.visitCount
   );
 
-  useEffect(() => {
-    if (visitCount === 0 || visitCount === 1) {
+  const setVisitedTrackerPageHandler = () => {
+    if (visitCount === 0) {
       dispatch(setVisitedTrackerPage(visitCount + 1));
     }
-  }, []);
+  };
 
   return (
     <div className={"tracker"}>
-      {visitCount === 1 ? (
+      {visitCount === 0 ? (
         <Swiper
           modules={[Pagination, A11y]}
           className={"preview__swiper"}
@@ -181,12 +181,12 @@ export const TrackerPage = () => {
                 <span className="text-blue">5 оптимально</span>
               </div>
             </div>
-            <Link
-              to={TRACKER_HABITS_ROUTE}
+            <div
+              onClick={setVisitedTrackerPageHandler}
               className={"preview__button _button-dark"}
             >
               Дальше
-            </Link>
+            </div>
             <div className={"circle-gradient circle-gradient_green"} />
           </SwiperSlide>
         </Swiper>

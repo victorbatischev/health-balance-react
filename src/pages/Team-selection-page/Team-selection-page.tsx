@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { addChallange } from "../../Redux/slice/myChallangeSlice";
 import { useAppDispatch } from "../../utils/hooks/redux-hooks";
+import { setShowFirstChallengeInstruction } from "../../Redux/slice/visitedPagesSlice";
 
 export const TeamSelectionPage = () => {
   const params = useParams();
@@ -35,6 +36,10 @@ export const TeamSelectionPage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const isFirstChallenge = useSelector(
+    (state: any) => state.visitedPages.challengePage.challengeCount
+  );
+
   const joinChallengeHandler = () => {
     if (!currentTeam) {
       return false;
@@ -43,6 +48,10 @@ export const TeamSelectionPage = () => {
       team: currentTeam,
       challangeId: Number(params.challangeId),
     };
+
+    if (isFirstChallenge === 0 || isFirstChallenge === 1) {
+      dispatch(setShowFirstChallengeInstruction(isFirstChallenge + 1));
+    }
     dispatch(addChallange(newChallenge));
     navigate("/challenge");
   };

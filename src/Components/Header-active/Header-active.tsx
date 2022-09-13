@@ -4,7 +4,8 @@ import icon from "../../assets/image/icon_reward.svg";
 import { RewardCount } from "../Reward/Reward-count";
 import icon_chat from "../../assets/image/icon_chat.svg";
 import { Link } from "react-router-dom";
-import { CHAT__ROUTE } from "../../provider/constants-route";
+import { CHAT__ROUTE, PROFILE_ROUTE } from "../../provider/constants-route";
+import { NavLink } from "react-router-dom";
 
 interface IHeaderActive {
   transparent: boolean;
@@ -17,7 +18,7 @@ const HeaderActive: FC<IHeaderActive> = ({ transparent }) => {
       style={{ background: transparent ? "transparent" : "#121212" }}
     >
       <div className="header-active__container">
-        <div className="header-active__column">
+        <NavLink to={PROFILE_ROUTE} className="header-active__column">
           <div className="header-active__avatar">
             <img
               src="https://w-dog.ru/wallpapers/3/19/345083118206129/sportsmenka-devushka-begovaya-dorozhka.jpg"
@@ -27,7 +28,7 @@ const HeaderActive: FC<IHeaderActive> = ({ transparent }) => {
           <div className="header-active__user-name icon-icon_back">
             Усейн болт
           </div>
-        </div>
+        </NavLink>
         <div className="header-active__column">
           {/*<div className="header-active__icon-reward">*/}
           {/*    <img src={icon} alt=""/>*/}

@@ -6,36 +6,36 @@
   justify-content: space-between;
   gap: 14px;
 
-  &__image{
+  &__image {
     flex: 0 0 166px;
     height: 98px;
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
 
-  &__info{
+  &__info {
     display: flex;
     flex-direction: column;
   }
 
-  &__title{
+  &__title {
     font-weight: 400;
     font-size: 15px;
     line-height: 120%;
-
+    color: #fff;
     margin: 0 0 15px 0;
   }
-  &__date{
+  &__date {
     font-weight: 400;
     font-size: 13px;
     margin: 0 0 8px 0;
     color: #919191;
   }
 }
-.reward{
+.reward {
   font-weight: 500;
   font-size: 13px;
 
@@ -44,11 +44,11 @@
   gap: 7px;
   align-items: center;
 
-  &__icon{
+  &__icon {
     width: 13px;
     height: 13px;
   }
-  &__count{
+  &__count {
     font-weight: 400;
   }
 }

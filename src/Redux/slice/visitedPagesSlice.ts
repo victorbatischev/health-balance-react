@@ -6,6 +6,7 @@ interface IVisitedSlice {
   challengePage: any;
   trackerPage: any;
   newChallengeInfoPage: any;
+  activityPage: any;
 }
 
 const initialState: IVisitedSlice = {
@@ -18,6 +19,9 @@ const initialState: IVisitedSlice = {
   },
   newChallengeInfoPage: {
     firstChallange: true,
+  },
+  activityPage: {
+    visitCount: 0,
   },
 };
 
@@ -37,6 +41,9 @@ export const visitedPagesSlice = createSlice({
     setShowFirstChallengeInstruction: (state, action) => {
       state.challengePage.challengeCount = action.payload;
     },
+    setVisitedActivityPage: (state, action) => {
+      state.activityPage.visitCount = action.payload;
+    },
   },
 });
 
@@ -45,6 +52,7 @@ export const {
   setVisitedTrackerPage,
   setStoreFirstChallenge,
   setShowFirstChallengeInstruction,
+  setVisitedActivityPage,
 } = visitedPagesSlice.actions;
 
 //export const selectCount = (state: RootState) => state.app

@@ -30,6 +30,9 @@ import {
 } from "chart.js";
 import { Banner } from "../../Components/Banner/Banner";
 import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../utils/hooks/redux-hooks";
+import { setVisitedActivityPage } from "../../Redux/slice/visitedPagesSlice";
+import FirstOpen from "./First-open";
 
 ChartJS.register(
   CategoryScale,
@@ -161,6 +164,11 @@ export const ActivityPage: FC = () => {
       },
     ],
   };
+  const dispatch = useAppDispatch();
+
+  const visitCount = useSelector(
+    (state: any) => state.visitedPages.activityPage.visitCount
+  );
 
   useEffect(() => {
     window.addEventListener("scroll", function () {
@@ -182,100 +190,106 @@ export const ActivityPage: FC = () => {
   }, []);
 
   return (
-    <div className={"activity-page"}>
-      <HeaderActive transparent={transparentHeader} />
-      <Navigation />
-      <div
-        className="activity-page__steps"
-        id={"step"}
-        style={{ backgroundAttachment: "fixed" }}
-      >
-        <Steps maxStepsCount={1000} userStepsCount={500} />
-      </div>
-      <div className="activity-page__steps-data">
-        <StepsData />
-      </div>
-      <div className="activity-page__card-actual">
-        {itemCardActuals.map((item) => (
-          <CardActual
-            key={item.id}
-            title={item.title}
-            path={item.title}
-            image={item.image}
-            type={item.type}
-          />
-        ))}
-      </div>
-      <div className="activity-page__title title">Статистика</div>
-      <div className="activity-page__target">
-        <Target />
-      </div>
-      <div className="activity-page__dynamics dynamics">
-        <div className="dynamics__title">Динамика</div>
-        <Tabs
-          labels={namesTabsDynamics}
-          onClick={setCurrentValueTab}
-          value={currentValueTab}
-        />
-        <TabContent index={0} value={currentValueTab}>
-          <div className="dynamics__chart">
-            <Bar options={optionsChartBar} data={dataDay} />
+    <>
+      {visitCount === 0 ? (
+        <FirstOpen />
+      ) : (
+        <div className={"activity-page"}>
+          <HeaderActive transparent={transparentHeader} />
+          <Navigation />
+          <div
+            className="activity-page__steps"
+            id={"step"}
+            style={{ backgroundAttachment: "fixed" }}
+          >
+            <Steps maxStepsCount={1000} userStepsCount={500} />
           </div>
-          <div className={"dynamics__info"}>
-            <div className="dynamics__value">
-              10 758 <br /> <span>шагов</span>
-            </div>
-            <div className="dynamics__value">
-              8,6 <br /> <span>км</span>
-            </div>
-            <div className="dynamics__value">
-              100% <br /> <span>от цели</span>
-            </div>
+          <div className="activity-page__steps-data">
+            <StepsData />
           </div>
-        </TabContent>
-        <TabContent index={1} value={currentValueTab}>
-          <div className="dynamics__chart">
-            <Bar options={optionsChartBar} data={dataWeek} />
+          <div className="activity-page__card-actual">
+            {itemCardActuals.map((item) => (
+              <CardActual
+                key={item.id}
+                title={item.title}
+                path={item.title}
+                image={item.image}
+                type={item.type}
+              />
+            ))}
           </div>
-          <div className={"dynamics__info"}>
-            <div className="dynamics__value">
-              10 758 <br /> <span>шагов</span>
-            </div>
-            <div className="dynamics__value">
-              8,6 <br /> <span>км</span>
-            </div>
-            <div className="dynamics__value">
-              100% <br /> <span>от цели</span>
-            </div>
+          <div className="activity-page__title title">Статистика</div>
+          <div className="activity-page__target">
+            <Target />
           </div>
-        </TabContent>
-        <TabContent index={2} value={currentValueTab}>
-          <div className="dynamics__chart">
-            <Bar options={optionsChartBar} data={dataMonth} />
+          <div className="activity-page__dynamics dynamics">
+            <div className="dynamics__title">Динамика</div>
+            <Tabs
+              labels={namesTabsDynamics}
+              onClick={setCurrentValueTab}
+              value={currentValueTab}
+            />
+            <TabContent index={0} value={currentValueTab}>
+              <div className="dynamics__chart">
+                <Bar options={optionsChartBar} data={dataDay} />
+              </div>
+              <div className={"dynamics__info"}>
+                <div className="dynamics__value">
+                  10 758 <br /> <span>шагов</span>
+                </div>
+                <div className="dynamics__value">
+                  8,6 <br /> <span>км</span>
+                </div>
+                <div className="dynamics__value">
+                  100% <br /> <span>от цели</span>
+                </div>
+              </div>
+            </TabContent>
+            <TabContent index={1} value={currentValueTab}>
+              <div className="dynamics__chart">
+                <Bar options={optionsChartBar} data={dataWeek} />
+              </div>
+              <div className={"dynamics__info"}>
+                <div className="dynamics__value">
+                  10 758 <br /> <span>шагов</span>
+                </div>
+                <div className="dynamics__value">
+                  8,6 <br /> <span>км</span>
+                </div>
+                <div className="dynamics__value">
+                  100% <br /> <span>от цели</span>
+                </div>
+              </div>
+            </TabContent>
+            <TabContent index={2} value={currentValueTab}>
+              <div className="dynamics__chart">
+                <Bar options={optionsChartBar} data={dataMonth} />
+              </div>
+              <div className={"dynamics__info"}>
+                <div className="dynamics__value">
+                  10 758 <br /> <span>шагов</span>
+                </div>
+                <div className="dynamics__value">
+                  8,6 <br /> <span>км</span>
+                </div>
+                <div className="dynamics__value">
+                  100% <br /> <span>от цели</span>
+                </div>
+              </div>
+            </TabContent>
           </div>
-          <div className={"dynamics__info"}>
-            <div className="dynamics__value">
-              10 758 <br /> <span>шагов</span>
-            </div>
-            <div className="dynamics__value">
-              8,6 <br /> <span>км</span>
-            </div>
-            <div className="dynamics__value">
-              100% <br /> <span>от цели</span>
-            </div>
+          <div className="activity-page__important">
+            <ImportantBlock />
+            <Banner title={"Стартовый опрос"} text={"Ответьте на 4 вопроса"} />
           </div>
-        </TabContent>
-      </div>
-      <div className="activity-page__important">
-        <ImportantBlock />
-        <Banner title={"Стартовый опрос"} text={"Ответьте на 4 вопроса"} />
-      </div>
 
-      <div className="activity-page__top-rating top-rating">
-        <div className="top-rating__title title">Топ рейтинг</div>
-        <TopRating />
-      </div>
-      <div className="circle-gradient circle-gradient_top" />
-    </div>
+          <div className="activity-page__top-rating top-rating">
+            <div className="top-rating__title title">Топ рейтинг</div>
+            <TopRating />
+          </div>
+          <div className="circle-gradient circle-gradient_top" />
+        </div>
+      )}
+    </>
   );
 };

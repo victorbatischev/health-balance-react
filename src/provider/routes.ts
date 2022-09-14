@@ -166,7 +166,7 @@ export const privateRoutes = [
     Component: LecturesPages,
   },
   {
-    path: LECTURE_ROUTE,
+    path: LECTURE_ROUTE + "/:lectureId",
     Component: LecturePage,
   },
   {

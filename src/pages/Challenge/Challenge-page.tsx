@@ -11,12 +11,16 @@ import { useSelector } from "react-redux";
 import { IMyChallange } from "../../types/interfaces";
 import { setVisitedChallengePage } from "../../Redux/slice/visitedPagesSlice";
 import { useAppDispatch } from "../../utils/hooks/redux-hooks";
+import { NavLink } from "react-router-dom";
+import { CREATING_CHALLENGE_ROUTE } from "../../provider/constants-route";
 
 export const ChallengePage = () => {
   const dispatch = useAppDispatch();
 
   const [valueTab, setValueTab] = React.useState<number>(0);
   const labelsTabChallenge = ["Личные", "Коммандные", "Общие", "Архив"];
+
+  const isCurator = true;
 
   const visitCount = useSelector(
     (state: any) => state.visitedPages.challengePage.visitCount
@@ -46,6 +50,14 @@ export const ChallengePage = () => {
       )}
       <Navigation />
       <HeaderTwo title={"Челленджи"} marginBottom={40} />
+      {isCurator && (
+        <div style={{ marginTop: "-20px", marginBottom: "20px" }}>
+          <NavLink to={CREATING_CHALLENGE_ROUTE} className="_button-yellow">
+            Создать челлендж
+          </NavLink>
+        </div>
+      )}
+
       <div style={isFirstChallenge === 1 ? { opacity: 0.2 } : {}}>
         <Tabs
           labels={labelsTabChallenge}

@@ -6,10 +6,15 @@ import "./creating-challenge.scss";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "../../utils/hooks/redux-hooks";
 import {
+  descriptionSelector,
   distanceSelector,
+  durationSelector,
+  numberTeamsSelector,
+  participantsTeamSelector,
   platformChallengeSelector,
   purposeTypeSelector,
   rewardSelector,
+  titleChallengeSelector,
   typeChallengeSelector,
 } from "../../Redux/slice/creatingChallengeSlice";
 
@@ -22,6 +27,11 @@ export const CreatingChallengePage = () => {
   const purposeType = useAppSelector(purposeTypeSelector);
   const distance = useAppSelector(distanceSelector);
   const reward = useAppSelector(rewardSelector);
+  const duration = useAppSelector(durationSelector);
+  const title = useAppSelector(titleChallengeSelector);
+  const description = useAppSelector(descriptionSelector);
+  const teamNumbers = useAppSelector(numberTeamsSelector);
+  const teamParticipants = useAppSelector(participantsTeamSelector);
   const nextOrederHandler = () => {
     if (order === 0 && !platform) {
       console.log("err");
@@ -40,6 +50,26 @@ export const CreatingChallengePage = () => {
       return false;
     }
     if (order === 2 && reward === 0) {
+      console.log("err");
+      return false;
+    }
+    if (order === 3 && duration.length === 0) {
+      console.log("err");
+      return false;
+    }
+    if (order === 4 && !title) {
+      console.log("err");
+      return false;
+    }
+    if (order === 5 && !description) {
+      console.log("err");
+      return false;
+    }
+    if (order === 6 && !teamNumbers) {
+      console.log("err");
+      return false;
+    }
+    if (order === 6 && !teamParticipants) {
       console.log("err");
       return false;
     }

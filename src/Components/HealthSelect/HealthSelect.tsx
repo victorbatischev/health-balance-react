@@ -8,6 +8,7 @@ interface IHealthSelect {
   options: any;
   selectValue: any;
   handleChange: Function;
+  placeholder: string;
 }
 
 const { Option } = Select;
@@ -15,10 +16,11 @@ const HealthSelect: FC<IHealthSelect> = ({
   options,
   selectValue,
   handleChange,
+  placeholder,
 }) => {
   return (
     <Select
-      placeholder="Ваша платформа"
+      placeholder={placeholder}
       value={selectValue}
       onChange={(value) => handleChange(value)}
       className="health-select"

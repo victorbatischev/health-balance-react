@@ -113,3 +113,8 @@ export function getItemsMinutes() {
   }
   return items;
 }
+
+export const convertDateWithPoint = (date: string) => {
+  const arr = date.split("-");
+  return arr[2] + "." + arr[1] + "." + arr[0];
+};

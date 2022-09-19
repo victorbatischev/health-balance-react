@@ -10,29 +10,32 @@ export interface ICreatingChallenge {
   purposeType: string[];
   distance: number;
   reward: number;
-  duration: string;
+  duration: string[];
   startRegister: string;
   titleChallenge: string;
   descriptionChallenge: string;
-  numberTeams: string;
-  participantsTeam: string;
-  cover: string;
+  numberTeams: 0 | undefined;
+  participantsTeam: 0 | undefined;
+  cover: any;
   disabledButton?: boolean;
 }
 
 const initialState: ICreatingChallenge = {
-  platform: "",
+  platform: undefined,
   typeChallenge: "",
   purposeType: [],
   distance: 0,
   reward: 0,
-  duration: "",
+  duration: [],
   startRegister: moment().year() + "-" + moment().month() + "-1",
   titleChallenge: "",
   descriptionChallenge: "",
-  numberTeams: "",
-  participantsTeam: "",
-  cover: "",
+  numberTeams: undefined,
+  participantsTeam: undefined,
+  cover: {
+    file: undefined,
+    src: undefined,
+  },
   disabledButton: true,
 };
 
@@ -92,8 +95,17 @@ export const creatingChallengeSlice = createSlice({
     setParticipantsTeam: (state, action) => {
       state.participantsTeam = action.payload;
     },
-    setCover: (state, action) => {
-      state.cover = action.payload;
+    setCoverFile: (state, action) => {
+      state.cover = {
+        file: action.payload,
+        src: state.cover.src,
+      };
+    },
+    setCoverSrc: (state, action) => {
+      state.cover = {
+        file: state.cover.file,
+        src: action.payload,
+      };
     },
     setDisabledButton: (state, action) => {
       state.disabledButton = action.payload;
@@ -107,7 +119,8 @@ export const creatingChallengeSlice = createSlice({
 });
 
 export const {
-  setCover,
+  setCoverFile,
+  setCoverSrc,
   setDescriptionChallenge,
   setDisabledButton,
   setDuration,

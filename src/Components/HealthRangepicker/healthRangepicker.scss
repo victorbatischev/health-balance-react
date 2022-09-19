@@ -1,0 +1,35 @@
+.ant-picker-panels > *:first-child button.ant-picker-header-next-btn {
+  visibility: visible !important;
+}
+
+.ant-picker-panels > *:first-child button.ant-picker-header-super-next-btn {
+  visibility: visible !important;
+}
+
+.ant-picker-panels > *:last-child {
+  display: none;
+}
+
+.ant-picker-footer-extra > div {
+  flex-wrap: wrap !important;
+}
+.ant-picker-dropdown-range {
+  margin-top: 59px !important;
+}
+.ant-picker-panel-container {
+  width: 100% !important;
+}
+.ant-picker-panels {
+  width: 100% !important;
+}
+.ant-picker-range-arrow {
+  display: none !important;
+}
+.ant-picker-cell-in-view.ant-picker-cell-in-range::before {
+  background: #f9b477 !important;
+  color: #fff !important;
+}
+.ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before,
+.ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before {
+  background: #f9b477 !important;
+}

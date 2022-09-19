@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./creating-challenge.scss";
 import { ScrollPicker } from "../Scroll-picker/Scroll-picker";
 import {
+  convertDateWithPoint,
   getItemsDays,
   getItemsMonth,
   getItemsYear,
@@ -13,29 +14,30 @@ import ru from "date-fns/locale/ru";
 import moment from "moment";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/redux-hooks";
 import {
+  durationSelector,
+  setDuration,
   setStartRegister,
   startRegister,
 } from "../../Redux/slice/creatingChallengeSlice";
+import HealthRangepicker from "../HealthRangepicker/HealthRangepicker";
 
 registerLocale("ru", ru);
 
 export const CreatingDate = () => {
   const dispatch = useAppDispatch();
 
+  const duration = useAppSelector(durationSelector);
+
   const itemDays = getItemsDays();
   const itemMonths = getItemsMonth();
   const itemYears = getItemsYear(1970, 2024);
 
-  const [startDate, setStartDate] = useState<Date>(new Date());
-  const [endDate, setEndDate] = useState<any>(null);
-  const onChange = (dates: any) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
-
   const startReg = useAppSelector(startRegister);
   const startRegArr = startReg.split("-");
+
+  const changeRangepickerHandler = (date: string[]) => {
+    dispatch(setDuration(date));
+  };
 
   const onChangeDay = (value: string) => {
     const payload = {
@@ -66,9 +68,7 @@ export const CreatingDate = () => {
       <div className="creating-date__title creating-title">Даты</div>
       <div className="creating-date__sub-title creating-sub-title">
         Начало регистрации
-        <span>
-          {startRegArr[2] + "." + startRegArr[1] + "." + startRegArr[0]}
-        </span>
+        <span>{convertDateWithPoint(startReg)}</span>
       </div>
       <div className={"creating-date__picker"}>
         <div className="creating-date__picker-item">
@@ -96,84 +96,18 @@ export const CreatingDate = () => {
       <div className="creating-date__sub-title creating-sub-title">
         Продолжительность челленджа
         <span>
-          {startDate && startDate.toLocaleString().substring(0, 10)} -{" "}
-          {endDate && endDate.toLocaleString().substring(0, 10)}
+          {duration.length > 0 &&
+            convertDateWithPoint(duration[0]) +
+              " - " +
+              convertDateWithPoint(duration[1])}
         </span>
       </div>
       <div className="creating-date__calendar">
-        <DatePicker
-          renderCustomHeader={({
-            date,
-            changeYear,
-            monthDate,
-            changeMonth,
-            decreaseMonth,
-            increaseMonth,
-            prevMonthButtonDisabled,
-            nextMonthButtonDisabled,
-          }) => (
-            <div
-              style={{
-                marginBottom: 20,
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <button
-                onClick={decreaseMonth}
-                disabled={prevMonthButtonDisabled}
-              >
-                {"<"}
-              </button>
-              <span className="react-datepicker__current-month">
-                {monthDate.toLocaleString("ru", {
-                  month: "long",
-                  year: "numeric",
-                })}
-              </span>
-
-              <button
-                onClick={increaseMonth}
-                disabled={nextMonthButtonDisabled}
-              >
-                {">"}
-              </button>
-            </div>
-          )}
-          wrapperClassName={"datePickerCustom"}
-          dateFormat="dd.MM.yyyy"
-          selected={startDate}
-          onChange={onChange}
-          startDate={startDate}
-          endDate={endDate}
-          selectsRange
-          inline
-          locale={ru}
+        <HealthRangepicker
+          dropdownClassname="top-295"
+          onChange={changeRangepickerHandler}
         />
       </div>
     </div>
   );
 };
-
-/*
-.ant-picker-panels > *:first-child button.ant-picker-header-next-btn {
-  visibility: visible !important;
-}
-
-.ant-picker-panels > *:first-child button.ant-picker-header-super-next-btn {
-  visibility: visible !important;
-}
-
-.ant-picker-panels > *:last-child {
-  display: none;
-}
-
-.ant-picker-panel-container, .ant-picker-footer {
-  width: 280px !important;
-}
-
-.ant-picker-footer-extra > div {
-  flex-wrap: wrap !important; 
-}
-
-*/

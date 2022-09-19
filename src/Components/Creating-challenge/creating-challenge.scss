@@ -1,20 +1,17 @@
 @import "src/assets/style/variables";
 
-
 .creating-title {
   font-weight: 700;
   font-size: 25px;
-
 }
 
 .creating-sub-title {
   font-weight: 500;
   font-size: 13px;
-
 }
 
 .button-end {
-  background: #F2994A;
+  background: #f2994a;
   font-weight: 700;
   font-size: 13px;
   text-align: center;
@@ -26,7 +23,6 @@
 }
 
 .targets {
-
   &__top-block {
     padding: 0 0 20px 0;
     border-bottom: 1px solid #202020;
@@ -35,7 +31,6 @@
   &__block {
     padding: 27px 0 0 0;
   }
-
 
   &__title {
     margin: 0 0 20px 0;
@@ -80,7 +75,6 @@
     -webkit-appearance: none;
     width: 100%;
 
-
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 20px;
@@ -96,7 +90,6 @@
         background: $greenColor;
       }
     }
-
   }
 }
 
@@ -154,12 +147,10 @@
   &__select {
     margin: 0 0 45px 0;
   }
-
 }
 
 .type-challenge {
-
-  &__title{
+  &__title {
     margin: 0 0 15px 0;
   }
 
@@ -181,10 +172,9 @@
       padding: 9px 23px;
       margin: 0 20px 0 0;
       color: $greenColor;
-      &.command{
+      &.command {
         color: $blueColor;
       }
-
     }
 
     input:checked + label {
@@ -193,53 +183,49 @@
   }
 }
 
-
 .select-platform {
-
-  &__title{
+  &__title {
     margin: 0 0 15px 0;
   }
 }
 
-.creating-title-challenge{
-  &__title{
+.creating-title-challenge {
+  &__title {
     margin: 0 0 15px 0;
   }
-  &__field{
+  &__field {
     margin: 0 0 10px 0;
   }
-  &__note{
+  &__note {
     color: #919191;
   }
 }
 
-.creating-description-challenge{
-  &__title{
+.creating-description-challenge {
+  &__title {
     margin: 0 0 15px 0;
   }
-  &__field{
+  &__field {
     margin: 0 0 10px 0;
   }
-  &__note{
+  &__note {
     color: #919191;
   }
 }
 
-.creating-commands-challenge{
-  &__title{
+.creating-commands-challenge {
+  &__title {
     margin: 0 0 15px 0;
   }
-  &__select{
-    &:not(:last-child){
+  &__select {
+    &:not(:last-child) {
       margin: 0 0 18px 0;
     }
   }
 }
 
-
-.final-variant{
-
-  &__image{
+.final-variant {
+  &__image {
     width: 100%;
     background: $backgroundBlock;
     display: flex;
@@ -248,7 +234,7 @@
     height: 180px;
     border-radius: 10px;
     margin: 0 0 16px 0;
-    &-main{
+    &-main {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -256,25 +242,47 @@
     }
   }
 
-  &__text{
+  &__icon-wrapper {
+    width: 66px;
+    height: 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__cover-wrapper {
+    width: 250px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
     font-weight: 400;
     font-size: 13px;
+    width: 100%;
+    height: 180px;
+    justify-content: center;
 
-    color: #5D5D5D;
+    color: #5d5d5d;
     display: flex;
     align-items: center;
-    img{
+    img {
       margin: 0 6px 0 0;
     }
   }
 
-  &__header{
+  &__header {
     display: flex;
     align-items: center;
     margin: 0 0 29px 0;
   }
 
-  &__icon{
+  &__icon {
     flex: 0 0 66px;
     height: 66px;
     border-radius: 5px;
@@ -283,98 +291,106 @@
     align-items: center;
     justify-content: center;
     margin: 0 22px 0 0;
-    img{
-      width: 100%;
-      height: 100%;
+    img {
       object-fit: cover;
       border-radius: 5px;
     }
   }
 
-  &__type{
+  &__type {
     font-size: 13px;
 
     color: $greenColor;
-    &.command{
+    &.command {
       color: $blueColor;
     }
     margin: 0 0 10px 0;
-    img{
+    img {
       margin: 0 0 0 5px;
       vertical-align: middle;
     }
   }
 
-  &__title{
+  &__title {
     font-weight: 700;
     font-size: 20px;
 
-    img{
+    img {
       margin: 0 0 0 7px;
       vertical-align: middle;
     }
   }
 
-  &__description{
+  &__description {
     margin: 0 0 32px 0;
     font-size: 13px;
     line-height: 130%;
 
     color: #919191;
-    img{
+    img {
       margin: 0 0 0 6px;
       vertical-align: middle;
     }
   }
 
-  &__row{
+  &__row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0 0 20px 0;
   }
 
-  &__data{
+  &__data {
     display: flex;
     align-items: center;
     font-weight: 700;
     font-size: 13px;
 
     color: $greenColor;
-    &-clock{
+    &-clock {
       height: 19px;
       width: 19px;
       margin: 0 5px 0 0;
     }
-    &-edit{
+    &-edit {
       margin: 0 0 0 6px;
     }
   }
 
-  &__reward{
+  &__reward {
     display: flex;
     align-items: center;
 
-    &-text{
+    &-text {
       font-weight: 700;
       font-size: 13px;
 
       margin: 0 10px 0 0;
     }
-    img{
+    img {
       margin: 0 0 0 5.4px;
     }
   }
 
-  &__tasks{
+  &__tasks {
     margin: 0 0 40px 0;
     display: flex;
     align-items: center;
     overflow: scroll;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       height: 0;
       width: 0;
     }
   }
 }
 
+.add-lecture {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  background-color: #121212;
+  padding: 10px;
+}

@@ -8,9 +8,13 @@ import { FC } from "react";
 
 interface IHealthDatepicker {
   onChange: Function;
+  dropdownClassname: string;
 }
 
-const HealthDatepicker: FC<IHealthDatepicker> = ({ onChange }) => {
+const HealthDatepicker: FC<IHealthDatepicker> = ({
+  onChange,
+  dropdownClassname,
+}) => {
   const changeHandler = (date: any, dateString: any) => {
     //console.log(date, dateString);
     onChange(dateString);
@@ -23,6 +27,7 @@ const HealthDatepicker: FC<IHealthDatepicker> = ({ onChange }) => {
         locale={locale}
         open={true}
         onChange={changeHandler}
+        dropdownClassName={dropdownClassname}
       />
     </div>
   );

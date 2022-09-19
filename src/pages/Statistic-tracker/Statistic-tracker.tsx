@@ -21,7 +21,7 @@ export const StatisticTracker = () => {
   return (
     <div>
       <Header title="Статистика трекера" />
-      <HealthDatepicker onChange={setDate} />
+      <HealthDatepicker dropdownClassname="top-63" onChange={setDate} />
       <DayStatistic date={convertDate(date)} />
       <Tabs
         labels={namesTabsDynamics}

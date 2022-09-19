@@ -108,6 +108,7 @@ export const ChallengePage = () => {
           <CardChallenge type={typesChallenge.command} percent={96} id={5} />
         </div>
       </TabContent>
+
       <div style={isFirstChallenge === 1 ? { opacity: 0.2 } : {}}>
         <div className="challenge-page__title-block block-title">
           Новые челленджи

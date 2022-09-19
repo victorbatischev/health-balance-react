@@ -38,6 +38,7 @@ export const SelectPlatform = () => {
 
       <div>
         <HealthSelect
+          placeholder="Ваша платформа"
           options={testPlatformData}
           selectValue={platform}
           handleChange={changePlatform}

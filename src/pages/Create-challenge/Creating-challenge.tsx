@@ -17,6 +17,7 @@ import {
   titleChallengeSelector,
   typeChallengeSelector,
 } from "../../Redux/slice/creatingChallengeSlice";
+import SuccessCreating from "../../Components/Creating-challenge/SuccessCreating";
 
 export const CreatingChallengePage = () => {
   const [order, setOrder] = useState<number>(0);
@@ -72,6 +73,9 @@ export const CreatingChallengePage = () => {
     if (order === 6 && !teamParticipants) {
       console.log("err");
       return false;
+    }
+    if (order === 7) {
+      console.log("save challege");
     }
     setOrder((prev) => prev + 1);
   };
@@ -142,6 +146,8 @@ export const CreatingChallengePage = () => {
             setOrder={setOrder}
           />
         );
+      case 8:
+        return <SuccessCreating />;
     }
   };
 
@@ -153,7 +159,7 @@ export const CreatingChallengePage = () => {
         className="creating-challenge-page__button _button-white"
         onClick={nextOrederHandler}
       >
-        Далее
+        {order === 7 ? "Сохранить" : "Далее"}
       </button>
     </div>
   );

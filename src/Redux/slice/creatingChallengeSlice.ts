@@ -17,7 +17,9 @@ export interface ICreatingChallenge {
   numberTeams: 0 | undefined;
   participantsTeam: 0 | undefined;
   cover: any;
+  icon: any;
   disabledButton?: boolean;
+  lectures: any;
 }
 
 const initialState: ICreatingChallenge = {
@@ -36,7 +38,12 @@ const initialState: ICreatingChallenge = {
     file: undefined,
     src: undefined,
   },
+  icon: {
+    file: undefined,
+    src: undefined,
+  },
   disabledButton: true,
+  lectures: [],
 };
 
 export const creatingChallengeSlice = createSlice({
@@ -107,8 +114,23 @@ export const creatingChallengeSlice = createSlice({
         src: action.payload,
       };
     },
+    setIconFile: (state, action) => {
+      state.icon = {
+        file: action.payload,
+        src: state.icon.src,
+      };
+    },
+    setIconSrc: (state, action) => {
+      state.icon = {
+        file: state.icon.file,
+        src: action.payload,
+      };
+    },
     setDisabledButton: (state, action) => {
       state.disabledButton = action.payload;
+    },
+    addLecture: (state, action) => {
+      state.lectures = [...state.lectures, action.payload];
     },
   },
   // extraReducers: (builder) => {
@@ -121,6 +143,8 @@ export const creatingChallengeSlice = createSlice({
 export const {
   setCoverFile,
   setCoverSrc,
+  setIconFile,
+  setIconSrc,
   setDescriptionChallenge,
   setDisabledButton,
   setDuration,
@@ -133,6 +157,7 @@ export const {
   setPurposeType,
   setDistance,
   setStartRegister,
+  addLecture,
 } = creatingChallengeSlice.actions;
 
 export const platformChallengeSelector = (state: RootState) =>
@@ -161,5 +186,7 @@ export const participantsTeamSelector = (state: RootState) =>
   state.creatingChallenge.participantsTeam;
 export const coverSelector = (state: RootState) =>
   state.creatingChallenge.cover;
-
+export const iconSelector = (state: RootState) => state.creatingChallenge.icon;
+export const lecturesSelector = (state: RootState) =>
+  state.creatingChallenge.lectures;
 export default creatingChallengeSlice.reducer;

@@ -45,7 +45,6 @@ export const FinalVariant = () => {
   const cover = useAppSelector(coverSelector);
   const icon = useAppSelector(iconSelector);
   const lectures = useAppSelector(lecturesSelector);
-  console.log("lectures", lectures);
 
   const setCover = (e: any) => {
     var reader = new FileReader();

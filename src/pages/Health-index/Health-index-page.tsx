@@ -1,17 +1,19 @@
 import React from "react";
 import { Navigation } from "../../Components/Navigation/Navigation";
 import "./health-index.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { QUESTIONNAIRE_ROUTE } from "../../provider/constants-route";
 import chart from "../../assets/image/Static-chart.png";
 import { useSelector } from "react-redux";
 import { HealthIndexResults } from "../Health-index-results/Health-index-results";
+import { useAppDispatch } from "../../utils/hooks/redux-hooks";
+import { resetIndexPageAnswer } from "../../Redux/slice/visitedPagesSlice";
 
 export const HealthIndexPage = () => {
   const answers = useSelector(
     (state: any) => state.visitedPages.indexPage.answers
   );
-  console.log("answers", answers);
+  console.log(answers);
 
   return (
     <>
@@ -49,14 +51,35 @@ const StartQuestionaire = () => {
 };
 
 const ContinueQuestionaire = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const continueTest = () => {
+    navigate(QUESTIONNAIRE_ROUTE);
+  };
+
+  const resetTest = () => {
+    dispatch(resetIndexPageAnswer());
+  };
+
   return (
-    <div className={"health-index"}>
-      <Link
-        to={QUESTIONNAIRE_ROUTE}
-        className="health-index__button _button-dark"
+    <div className="continue-questionaire">
+      <div className="continue-questionaire__title">
+        Продолжить тестирование?
+      </div>
+      <div className="continue-questionaire__text">
+        Ваши результаты были сохранены
+      </div>
+      <div className="_button-dark" onClick={continueTest}>
+        Продолжить
+      </div>
+      <div
+        className="_button-dark"
+        onClick={resetTest}
+        style={{ color: "#fff", marginTop: "16px" }}
       >
-        Продолжить тестирование
-      </Link>
+        Начать сначала
+      </div>
     </div>
   );
 };

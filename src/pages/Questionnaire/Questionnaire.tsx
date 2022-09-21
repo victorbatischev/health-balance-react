@@ -34,7 +34,7 @@ export const Questionnaire = () => {
   );
 
   useEffect(() => {
-    if (answers.length === questionsQuiz.length) {
+    if (answers.length === questionsQuiz.length && questionsQuiz.length > 0) {
       navigation(HEALTH_INDEX_ROUTE);
     }
   }, [answers]);

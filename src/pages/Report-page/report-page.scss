@@ -1,1 +1,37 @@
 @import "src/assets/style/variables";
+
+.report-page {
+  &__title {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  &__ok {
+    font-size: 13px;
+    color: #00a62e;
+    background-image: url("../../assets//image//icon_purpose__status_full_green.svg");
+    background-repeat: no-repeat;
+    padding: 2px 0px 4px 19px;
+    margin-top: 5px;
+  }
+  &__text {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  &__danger {
+    font-size: 13px;
+    color: #f24a4a;
+    background-image: url("../../assets//image//icon_purpose__status_full_red.svg");
+    background-repeat: no-repeat;
+    padding: 2px 0px 4px 19px;
+    margin-top: 5px;
+  }
+  &__pdf {
+    width: 100%;
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#00a62e, #074d1b);
+    border-radius: 8px;
+  }
+}

@@ -1,12 +1,11 @@
 @import "src/assets/style/variables";
 
-.dynamics-page{
-
-  &__title{
+.dynamics-page {
+  &__title {
     margin: 0 0 20px 0;
   }
 
-  &__index{
+  &__index {
     margin: 0 0 40px 0;
     display: flex;
     gap: 10px;
@@ -21,7 +20,34 @@
     flex: 0 0 203px;
   }
 
-  &__main-title{
+  &__main-title {
     margin: 0 0 20px 0;
   }
+}
+.dynamics-page-bar {
+  &__wrapper {
+    background-color: #191919;
+    border-radius: 7px;
+    padding: 10px;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    div:nth-child(1) {
+      font-size: 17px;
+    }
+    div:nth-child(2) {
+      font-size: 13px;
+      color: #56ccf2;
+      margin-top: 3px;
+    }
+  }
+}
+.dynamics-page-bar-scroll {
+  margin: 0 0 40px 0;
+  display: flex;
+  gap: 10px;
+  overflow: scroll;
 }

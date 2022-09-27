@@ -24,7 +24,10 @@
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
     "faker": "^6.6.6",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "moment": "^2.29.4",
+    "pdfkit": "^0.13.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-datepicker": "^4.8.0",
@@ -66,6 +69,7 @@
     ]
   },
   "devDependencies": {
+    "@types/pdfkit": "^0.12.6",
     "@types/redux-persist": "^4.3.1",
     "webpack-cli": "^4.10.0"
   }

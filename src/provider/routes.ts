@@ -194,7 +194,7 @@ export const privateRoutes = [
     Component: IndividualReportPage,
   },
   {
-    path: REPORT_ROUTE,
+    path: REPORT_ROUTE + "/:date",
     Component: ReportPage,
   },
   {

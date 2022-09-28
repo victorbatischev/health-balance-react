@@ -35,3 +35,11 @@
   z-index: 5;
   opacity: 0.8;
 }
+
+.modal-rubric-content {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+}

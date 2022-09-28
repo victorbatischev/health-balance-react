@@ -41,6 +41,7 @@ import {
   INTERVIEW_PAGE,
   TEAM_MEMBERS_PAGE,
   USER_PROFILE_PAGE,
+  CREATING_INTERESTING_ROUTE,
 } from "./constants-route";
 import { AuthPage } from "../pages/Authorization/Auth-page";
 import { StartPage } from "../pages/Start-pages/StartPage";
@@ -84,6 +85,7 @@ import { DialogPage } from "../pages/Dialog-page/Dialog-page";
 import { InterviewPage } from "../pages/Interview-page/Interview-page";
 import { TeamMembersPage } from "../pages/Team-members-page/Team-members-page";
 import { UserProfile } from "../pages/User-profile-page/User-profile-page";
+import CreateInteresting from "../pages/Create-interesting/Create-interesting-page";
 
 export const publicRoutes = [
   {
@@ -256,5 +258,9 @@ export const privateRoutes = [
   {
     path: USER_PROFILE_PAGE + "/:userId",
     Component: UserProfile,
+  },
+  {
+    path: CREATING_INTERESTING_ROUTE,
+    Component: CreateInteresting,
   },
 ];
